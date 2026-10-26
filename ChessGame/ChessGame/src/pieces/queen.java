@@ -1,4 +1,7 @@
 package pieces;
+
+public class queen {
+    
  
 import java.util.List;
  

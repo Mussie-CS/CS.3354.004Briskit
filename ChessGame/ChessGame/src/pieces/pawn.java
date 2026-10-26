@@ -1,5 +1,7 @@
 package pieces;
 
+public class pawn {
+    
 import java.util.ArrayList;
 import java.util.List;
 

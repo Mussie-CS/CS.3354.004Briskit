@@ -1,4 +1,7 @@
 package pieces;
+
+public class king {
+    
  
 import java.util.List;
  
