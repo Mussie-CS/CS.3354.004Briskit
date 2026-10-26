@@ -105,4 +105,4 @@ public class position {
         return row * 8 + column;
     }
     
-}
+} //for pull request
