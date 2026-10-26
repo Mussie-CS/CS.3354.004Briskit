@@ -1,13 +1,14 @@
 package pieces;
 
+
 public enum color {
 
-    // The white side moves first, the black
+    // The white side moves first, then black
     WHITE,
     BLACK;
  
     /**
-     * Gets the other colo
+     * Gets the other side.
      *
      * @return BLACK if this is WHITE, otherwise WHITE
      */
@@ -15,4 +16,7 @@ public enum color {
         return this == WHITE ? BLACK : WHITE;
     }
 }
+
+
+    
 
