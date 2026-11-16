@@ -1,22 +1,20 @@
+
 package pieces;
 
-public class pawn {
-    
 import java.util.ArrayList;
 import java.util.List;
 
 import board.board;
 import board.position;
 
-
- //A pawn: moves forward one square , and captures one square diagonally forward.
- 
+// A pawn moves forward one square and captures
+// one square diagonally forward.
 public class pawn extends piece {
 
     /**
      * Creates a pawn.
      *
-     * @param color    the side the piece belongs to
+     * @param color the side the piece belongs to
      * @param position the starting square
      */
     public pawn(color color, position position) {
@@ -24,7 +22,7 @@ public class pawn extends piece {
     }
 
     /**
-     * Gets the letter used display code.
+     * Gets the letter used in the display code.
      *
      * @return "p"
      */
@@ -34,41 +32,60 @@ public class pawn extends piece {
     }
 
     /**
-     * Lists the squares this pawn can move to. White moves up the board
+     * Lists the squares this pawn can move to.
+     * White moves up, Black moves down.
      *
      * @param board the board the piece is on
-     * @return the squares the pawn can move to or capture on
+     * @return possible destination squares
      */
     @Override
     public List<position> possibleMoves(board board) {
+
         List<position> moves = new ArrayList<>();
+
         int direction = (color == color.WHITE) ? -1 : 1;
         int startRow = (color == color.WHITE) ? 6 : 1;
+
         int row = position.getRow();
         int col = position.getColumn();
 
-        // one square forward
+        // One square forward
         position one = new position(row + direction, col);
+
         if (one.isValid() && board.getPiece(one) == null) {
             moves.add(one);
 
-            // two squares forward
+            // Two squares forward from starting position
             position two = new position(row + 2 * direction, col);
-            if (row == startRow && board.getPiece(two) == null) {
+
+            if (row == startRow &&
+                two.isValid() &&
+                board.getPiece(two) == null) {
+
                 moves.add(two);
             }
         }
 
-        // diagonal captures
+        // Diagonal captures
         for (int dc = -1; dc <= 1; dc += 2) {
-            position diag = new position(row + direction, col + dc);
+
+            position diag = new position(
+                row + direction,
+                col + dc
+            );
+
             if (diag.isValid()) {
+
                 piece other = board.getPiece(diag);
-                if (other != null && other.getColor() != color) {
+
+                if (other != null &&
+                    other.getColor() != color) {
+
                     moves.add(diag);
                 }
             }
         }
+
         return moves;
     }
 }

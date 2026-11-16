@@ -1,18 +1,10 @@
 package pieces;
 
-public class knight {
-    
- 
 import java.util.List;
- 
 import board.board;
 import board.position;
- 
-
- //A knight: jumps in an L shape and can hop over other pieces.
 
 public class knight extends piece {
- 
     //The eight jumps
     private static final int[][] OFFSETS = {
         {-2, -1}, {-2, 1}, {-1, -2}, {-1, 2},
